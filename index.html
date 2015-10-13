@@ -9,7 +9,17 @@
     <div class="container">
         <h1><%= _.slugify(appname) %> demo</h1>
 
-        
+        <div id="tree" class="pat-fancytree" data-pat-fancytree="">
+          <ul id="treeData" style="display: none;">
+            <li id="1">Node 1
+            <li id="2" class="folder">Folder 2
+              <ul>
+                <li id="3">Node 2.1
+                <li id="4">Node 2.2
+              </ul>
+          </ul>
+        </div>
+
     </div>
 </body>
 </html>
