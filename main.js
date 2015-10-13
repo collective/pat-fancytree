@@ -6,7 +6,7 @@ require.config({
     // FRAMEWORK DEPENDENCIES
     "expect": "bower_components/expect/index",
     "jquery": "bower_components/jquery/dist/jquery",
-    "jquery-ui": "bower_components/jquery-ui/jquery-ui",
+    "jquery-ui": "bower_components/jquery-ui/ui",
     "jquery.browser": "bower_components/jquery.browser/dist/jquery.browser",
     "logging": "bower_components/logging/src/logging",
     "pat-base": "bower_components/patternslib/src/core/base",
@@ -20,7 +20,16 @@ require.config({
     "underscore": "bower_components/underscore/underscore"
   },
   shim: {
-    "fancytree": { deps: ["jquery", "jquery-ui"] }
+    "fancytree": {
+      deps: [
+        "jquery",
+        // only depend on needed jquery ui parts
+        "jquery-ui/core",
+        "jquery-ui/widget",
+        "jquery-ui/effect",
+        "jquery-ui/effect-blind"
+      ]
+    }
   },
   wrapShim: true
 });
