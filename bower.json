@@ -1,0 +1,17 @@
+{
+  "name": "pat-fancytree",
+  "version": "1.0.0",
+  "devDependencies": {},
+  "dependencies": {
+    "patternslib": "master"
+  },
+  "keywords": [
+    "patternslib",
+    "pattern"
+  ],
+  "license": "BSD",
+  "ignore": [
+    "node_modules",
+    "bower_components"
+  ]
+}
