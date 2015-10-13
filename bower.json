@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "devDependencies": {},
   "dependencies": {
-    "patternslib": "master"
+    "patternslib": "master",
+    "fancytree": "master"
+  },
+  "resolutions": {
+  "jquery": "1.11.3",
+  "patternslib": "master"
   },
   "keywords": [
     "patternslib",
