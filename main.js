@@ -25,5 +25,7 @@ require.config({
   wrapShim: true
 });
 if (typeof(require) === "function") {
-    require(["pat-fancytree"], function() {});
+    require(["pat-registry", "pat-fancytree"], function(reg) {
+      reg.init();
+    });
 }

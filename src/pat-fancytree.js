@@ -46,7 +46,6 @@ define([
         trigger: ".pat-fancytree",
 
         init: function initUndefined () {
-            debugger;
             this.options = parser.parse(this.$el);
             /* this.options will now contain the configured pattern properties
              * you"ve registered with the parser.addArgument method.
