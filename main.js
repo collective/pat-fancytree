@@ -1,6 +1,3 @@
-/* jshint undef: true, unused: true:, noarg: true, latedef: true */
-/*global config require */
-
 require.config({
   baseUrl: "src",
   paths: {
@@ -22,13 +19,11 @@ require.config({
     "pat-utils": "bower_components/patternslib/src/core/utils",
     "underscore": "bower_components/underscore/underscore"
   },
-
-    shim: {
-      "fancytree": { deps: ["jquery", "jquery-ui"] }
-    },
-    wrapShim: true
-  }
-);
+  shim: {
+    "fancytree": { deps: ["jquery", "jquery-ui"] }
+  },
+  wrapShim: true
+});
 if (typeof(require) === "function") {
     require(["pat-fancytree"], function() {});
 }

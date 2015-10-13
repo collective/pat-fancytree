@@ -8,8 +8,7 @@ define([
 ], function(Base, registry, Parser, logger) {
     "use strict";
 
-    debugger;
-    var log = logger.getLogger("pat-clone");
+    var log = logger.getLogger("pat-fancytree");
     /* For logging, you can call log.debug, log.info, log.warn, log.error and log.fatal.
      *
      * For more information on how to use the logger and how to view log messages, please read:
@@ -47,6 +46,7 @@ define([
         trigger: ".pat-fancytree",
 
         init: function initUndefined () {
+            debugger;
             this.options = parser.parse(this.$el);
             /* this.options will now contain the configured pattern properties
              * you"ve registered with the parser.addArgument method.
