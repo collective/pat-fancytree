@@ -1,23 +1,24 @@
 (function (root, factory) {
     // We use AMD (Asynchronous Module Definition) or browser globals to create
     // this module.
-    if (typeof define === 'function' && define.amd) {
+    "use strict";
+    if (typeof define === "function" && define.amd) {
         define([
-            "jquery",
             "pat-base",
             "pat-registry",
             "pat-parser",
-            "pat-logger"
+            "pat-logger",
+            "fancytree"
         ], function() {
             return factory.apply(this, arguments);
         });
     } else {
-        // If require.js is not available, you'll need to make sure that these
+        // If require.js is not available, you"ll need to make sure that these
         // global variables are available.
-        factory($, patterns.Base, patterns, patterns.Parser, patterns.logger);
+        factory(patterns.Base, patterns, patterns.Parser, patterns.logger, ft);
     }
-}(this, function($, Base, registry, Parser, logger) {
-    'use strict';
+}(this, function(Base, registry, Parser, logger, ft) {
+    "use strict";
 
     var log = logger.getLogger("pat-clone");
     /* For logging, you can call log.debug, log.info, log.warn, log.error and log.fatal.
@@ -26,8 +27,8 @@
      * https://github.com/Patternslib/logging
      */
 
-    var parser = new Parser('');
-    /* If you'd like your pattern to be configurable via the
+    var parser = new Parser("fancytree");
+    /* If you"d like your pattern to be configurable via the
      * data-pat fancytree attribute, then you need to
      * specify the available arguments here, by calling parser.addArgument.
      *
@@ -35,34 +36,36 @@
      *  - name: The required name of the pattern property which you want to make
      *      configurable.
      *  - default_value: An optional default string value of the property if the user
-     *      doesn't provide one.
+     *      doesn"t provide one.
      *  - choices: An optional set (Array) of values that the property might take.
      *      If specified, values outside of this set will not be accepted.
      *  - multiple: An optional boolean value which specifies wether the
      *      property can be multivalued or not.
      *
      *  For example:
-     *      parser.addArgument('color', 'blue', ['red', 'green', 'blue'], false);
+     *      parser.addArgument("color", "blue", ["red", "green", "blue"], false);
      */
+        parser.addArgument("selectMode", "2", ["1", "2", "3"]);
 
     return Base.extend({
         /* The name is used to store the pattern in a registry and needs to be
          * unique.
          */
-        name: '',
+        name: "pat-fancytree",
         /* The trigger specifies the selector (CSS or jQuery) which Patternslib
          * will scan for in order to identifiy and initialize this pattern.
          */
-        trigger: ".pat fancytree",
+        trigger: ".pat-fancytree",
 
         init: function initUndefined () {
             this.options = parser.parse(this.$el);
             /* this.options will now contain the configured pattern properties
-             * you've registered with the parser.addArgument method.
+             * you"ve registered with the parser.addArgument method.
              *
              * If the user provided any values via the data-pat fancytree
              * attribute, those values will already be set.
              */
+             this.$el.fancytree({ selectMode: this.options.selectMode });
         }
     });
 }));
