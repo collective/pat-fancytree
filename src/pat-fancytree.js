@@ -1,25 +1,14 @@
-(function (root, factory) {
-    // We use AMD (Asynchronous Module Definition) or browser globals to create
-    // this module.
-    "use strict";
-    if (typeof define === "function" && define.amd) {
-        define([
-            "pat-base",
-            "pat-registry",
-            "pat-parser",
-            "pat-logger",
-            "fancytree"
-        ], function() {
-            return factory.apply(this, arguments);
-        });
-    } else {
-        // If require.js is not available, you"ll need to make sure that these
-        // global variables are available.
-        factory(patterns.Base, patterns, patterns.Parser, patterns.logger, ft);
-    }
-}(this, function(Base, registry, Parser, logger, ft) {
+
+define([
+    "pat-base",
+    "pat-registry",
+    "pat-parser",
+    "pat-logger",
+    "fancytree"
+], function(Base, registry, Parser, logger) {
     "use strict";
 
+    debugger;
     var log = logger.getLogger("pat-clone");
     /* For logging, you can call log.debug, log.info, log.warn, log.error and log.fatal.
      *
@@ -45,13 +34,13 @@
      *  For example:
      *      parser.addArgument("color", "blue", ["red", "green", "blue"], false);
      */
-        parser.addArgument("selectMode", "2", ["1", "2", "3"]);
+    parser.addArgument("selectMode", "2", ["1", "2", "3"]);
 
     return Base.extend({
         /* The name is used to store the pattern in a registry and needs to be
          * unique.
          */
-        name: "pat-fancytree",
+        name: "fancytree",
         /* The trigger specifies the selector (CSS or jQuery) which Patternslib
          * will scan for in order to identifiy and initialize this pattern.
          */
@@ -68,4 +57,4 @@
              this.$el.fancytree({ selectMode: this.options.selectMode });
         }
     });
-}));
+});
